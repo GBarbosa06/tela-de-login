@@ -8,6 +8,7 @@ function Login() {
     const [senha, setSenha] = useState("");
     const [confirm, setConfirm] = useState("");
 
+
     const [show, setShow] = useState(false);
     
 
@@ -15,6 +16,9 @@ function Login() {
         if (nome.trim() === "" || email.trim() === "" || senha.trim() === "" || confirm.trim() === "") {
             alert("Dados insuficientes");
             return(-1);
+        }
+        if (senha !== confirm) {
+            // ! fazer confirmações de senha, usar states e criar um componente para limpar o codigo
         }
         
     }
@@ -27,8 +31,18 @@ function Login() {
                 <Input placeholder="E-mail" value={email} type="email" onChange={(event) => setEmail(event.target.value)} />
                 <div className="flex flex-row">
                     <div className="flex flex-col gap-2 flex-2 mr-2">
-                        <Input placeholder="Senha" value={senha} type="password" onChange={(event) => setSenha(event.target.value)} />
-                        <Input placeholder="Confirme sua senha" type="password" value={confirm} onChange={(event) => setConfirm(event.target.value)} />
+                        <Input 
+                            placeholder="Senha"  
+                            type={show ? "text" : "password"} 
+                            value={senha} 
+                            onChange={(event) => setSenha(event.target.value)} />
+                            
+                        <Input 
+                            placeholder="Confirme sua senha" 
+                            type={show ? "text" : "password"} 
+                            value={confirm} 
+                            onChange={(event) => setConfirm(event.target.value)} />
+                            
                     </div>
                     <span className="flex self-center cursor-pointer select-none" onClick={() => setShow(!show) }>
                         {show ? <Eye size={50} /> : <EyeOff size={50}/>}
