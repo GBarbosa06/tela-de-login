@@ -45,7 +45,7 @@ function Login() {
                     type="email" 
                     onChange={(event) => setEmail(event.target.value)} />
                 <div className="flex flex-row">
-                    <div className="flex flex-col gap-2 flex-2 mr-2">
+                    <div className="flex flex-col gap-2 flex-2 mr-4">
                         <Input 
                             placeholder="Senha"  
                             type={show ? "text" : "password"} 
