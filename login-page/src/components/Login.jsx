@@ -20,16 +20,16 @@ function Login() {
         setSamePass(pass === conf && pass.trim() !== "");
         setSixChars(pass.length >= 6);
     };
-
     function register(event){
         event.preventDefault();
-
+        
         verifyFields(name, email, password, confirm);
-
+        
         alert("Cadastro realizado com sucesso!")
         
     }
-
+    
+    // ! fazer correções 
     return(
         <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center flex-col text-white'>
             <h1 className="text-4xl font-extrabold font-serif m-5">Cadastro</h1>
@@ -60,7 +60,7 @@ function Login() {
                             value={password} 
                             onChange={(event) => {
                                 setPassword(event.target.value);
-                                verifyFields(name, email, password,  event.target.value)
+                                verifyFields(name, email, password, event.target.value)
                         }} />
                             
                         <Input 
