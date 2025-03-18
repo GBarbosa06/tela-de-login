@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./Input";
 import ValidationMessages from "./ValidationMessages";
 import { Eye, EyeOff } from "lucide-react";
@@ -13,23 +13,23 @@ function Login() {
         const [samePass, setSamePass] = useState(false);
         const [sixChars, setSixChars] = useState(false);
     const [show, setShow] = useState(false);
-    
-    function verifyFields (name, email, pass, conf) {
+
+
+    useEffect(() => {
         setNameFieldUsed(name.trim() !== "");
         setEmailFieldUsed(email.trim() !== "");
-        setSamePass(pass === conf && pass.trim() !== "");
-        setSixChars(pass.length >= 6);
-    };
+        setSamePass(password === confirm && password.trim() !== "");
+        setSixChars(password.length >= 6);
+    }, [name, email, password, confirm]);
+    
     function register(event){
         event.preventDefault();
-        
-        verifyFields(name, email, password, confirm);
+    
         
         alert("Cadastro realizado com sucesso!")
         
     }
     
-    // ! fazer correções 
     return(
         <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center flex-col text-white'>
             <h1 className="text-4xl font-extrabold font-serif m-5">Cadastro</h1>
@@ -40,7 +40,6 @@ function Login() {
                     type="text" 
                     onChange={(event) => {
                         setName(event.target.value);
-                        verifyFields(name, email, password, confirm, event.target.value);
                     }} />
 
                 <Input 
@@ -49,7 +48,6 @@ function Login() {
                     type="email" 
                     onChange={(event) => {
                         setEmail(event.target.value);
-                        verifyFields(name, email, password,  event.target.value);
                     }} />
 
                 <div className="flex flex-row">
@@ -60,7 +58,6 @@ function Login() {
                             value={password} 
                             onChange={(event) => {
                                 setPassword(event.target.value);
-                                verifyFields(name, email, password, event.target.value)
                         }} />
                             
                         <Input 
@@ -69,7 +66,6 @@ function Login() {
                             value={confirm} 
                             onChange={(event) => { 
                                 setConfirm(event.target.value); 
-                                verifyFields(name, email, password, event.target.value);
                         }} />
                             
                             
@@ -81,14 +77,13 @@ function Login() {
                     
                 </div>
                     <ValidationMessages nameFieldUsed={nameFieldUsed} emailFieldUsed={emailFieldUsed} samePass={samePass} sixChars={sixChars}/>
-                <input 
-                    type="submit" 
-                    value="Cadastrar" 
+                <button 
+                    type="submit"
                     className={`rounded-md w-90 h-15 transition-all
                         ${!samePass || !sixChars ? "bg-gray-700 cursor-not-allowed" : "bg-gradient-to-r from-purple-500 to-pink-500 font-extrabold p-3 hover:brightness-110 cursor-pointer"}` }
                     onClick={register} 
                     disabled={!nameFieldUsed ||!emailFieldUsed || !samePass || !sixChars}
-                    />
+                    >Cadastrar</button>
             </form>
             
         </div> 
