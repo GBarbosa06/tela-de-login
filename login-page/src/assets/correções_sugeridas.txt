@@ -1,0 +1,40 @@
+3. Problema no botão de "Cadastrar" (<input type="submit" />)
+O botão de submit está chamando register no evento onClick, mas como é um <input type="submit" />, ele também tenta submeter o formulário normalmente, podendo causar um recarregamento indesejado da página.
+
+Correção: Alterar para um <button>:
+
+js
+Copiar
+Editar
+<button
+    type="submit"
+    className={`rounded-md w-90 h-15 transition-all
+        ${!samePass || !sixChars ? "bg-gray-700 cursor-not-allowed" : "bg-gradient-to-r from-purple-500 to-pink-500 font-extrabold p-3 hover:brightness-110 cursor-pointer"}`}
+    disabled={!nameFieldUsed || !emailFieldUsed || !samePass || !sixChars}
+>
+    Cadastrar
+</button>
+4. w-90 e h-15 podem estar incorretos
+w-90 e h-15 não são classes do Tailwind padrão. O Tailwind usa w-[valor] e h-[valor], como w-24, h-10, etc.
+
+Correção:
+Substituir w-90 por w-[90px] (ou um valor correspondente do Tailwind) e h-15 por h-[60px], por exemplo.
+
+5. verifyFields pode causar renderizações desnecessárias
+A função verifyFields está alterando estados (setNameFieldUsed, setEmailFieldUsed, etc.) sempre que qualquer campo é alterado. Isso pode causar múltiplas renderizações desnecessárias.
+
+Solução alternativa:
+Criar um useEffect para verificar os campos sempre que os estados mudarem:
+
+js
+Copiar
+Editar
+import { useEffect } from "react";
+
+useEffect(() => {
+    setNameFieldUsed(name.trim() !== "");
+    setEmailFieldUsed(email.trim() !== "");
+    setSamePass(password === confirm && password.trim() !== "");
+    setSixChars(password.length >= 6);
+}, [name, email, password, confirm]);
+Isso evita que a função verifyFields precise ser chamada manualmente em cada onChange.
