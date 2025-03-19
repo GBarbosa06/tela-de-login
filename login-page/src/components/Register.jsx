@@ -31,7 +31,7 @@ function Register() {
     }
     
     return(
-        <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center flex-col text-white'>
+        <div className=' min-w-[500px] h-[390px] flex justify-center items-center flex-col text-white'>
             <h1 className="text-4xl font-extrabold font-serif m-5">Cadastro</h1>
             <form className="flex flex-col gap-2 w-90">
                 <Input 

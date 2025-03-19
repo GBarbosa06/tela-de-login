@@ -5,9 +5,9 @@ import Login from './components/Login'
 function App() {
 
   return (
-    <div className='bg-amber-600 w-screen min-h-screen flex'>
+    <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center'>
       <Register />
-      <Login />
+      {/* <Login /> */}
       
     </div>
   )
