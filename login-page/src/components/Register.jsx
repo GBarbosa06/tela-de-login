@@ -3,7 +3,7 @@ import Input from "./Input";
 import ValidationMessages from "./ValidationMessages";
 import { Eye, EyeOff } from "lucide-react";
 
-function Login() {
+function Register() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
         const [nameFieldUsed, setNameFieldUsed] = useState(false);
@@ -90,4 +90,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;
