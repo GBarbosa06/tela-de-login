@@ -6,9 +6,7 @@ function App() {
   const [registerPage, setRegisterPage] = useState(true)
   return (
     <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center'>
-    
-    <h1>teste</h1>
-
+      
     {/* <Register />
 
     <Login /> */}

@@ -2,7 +2,7 @@ import React from 'react'
 
 const PageChange = ({children}) => {
   return (
-    <p className=''>{children}</p>
+    <p className='text-[.9em] text-neutral-300'>{children}</p>
   )
 }
 

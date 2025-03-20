@@ -103,7 +103,9 @@ function Register() {
           Cadastrar
         </button>
       </form>
-      <PageChange>Já tem um conta? <span onClick={navigate("/login")}>Faça login</span></PageChange>
+
+      <PageChange>Já tem um conta? <button className="text-blue-300 cursor-pointer hover:text-blue-400" onClick={() => navigate("/login")}>Faça login</button></PageChange>
+    
     </div>
   );
 }

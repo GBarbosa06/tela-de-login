@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Title from "../components/Title";
 import Input from "../components/Input";
 import { Eye, EyeOff } from "lucide-react";
+import PageChange from "../components/PageChange";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,6 +11,8 @@ function Login() {
   const [show, setShow] = useState(false);
   const [emailFieldUsed, setEmailFieldUsed] = useState(false);
   const [passFieldUsed, setPassFieldUsed] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEmailFieldUsed(email.trim() !== "");
@@ -67,6 +71,10 @@ function Login() {
           Cadastrar
         </button>
       </form>
+
+      <PageChange>Ainda não tem uma conta? <button className="text-blue-300 cursor-pointer hover:text-blue-400" onClick={() => navigate("/register")}>Registrar</button></PageChange>
+      <PageChange><button className="text-blue-300 cursor-pointer hover:text-blue-400" onClick={() => alert("Um e-mail com instruções para redefinir sua senha foi enviado. Verifique sua caixa de entrada e spam")}>Esqueci minha senha</button> </PageChange>
+
     </div>
   );
 }
