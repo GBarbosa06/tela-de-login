@@ -12,11 +12,13 @@ function Login() {
   const [passFieldUsed, setPassFieldUsed] = useState(false);
 
   useEffect(() => {
-    setEmailFieldUsed(email.trim())
-    setPassFieldUsed(password.trim())
+    setEmailFieldUsed(email.trim() !== "")
+    setPassFieldUsed(password.trim() !== "")
   }, [email, password])
 
-  function login() {
+  function login(event) {
+    event.preventDefault();
+
     if(email === "email@gmail.com" && password === "gui123"){
       alert("Login realizado com sucesso");
     }
@@ -28,7 +30,7 @@ function Login() {
   return (
     <div className="min-w-[500px] h-[390px] flex justify-center items-center flex-col text-white">
       <Title>Login</Title>
-      <form className="flex flex-col gap-2 min-w-90 ">      
+      <form className="flex flex-col gap-2">      
         <Input
           placeholder="Email"
           value={email}
@@ -61,7 +63,7 @@ function Login() {
                             ? "bg-gray-700 cursor-not-allowed"
                             : "bg-gradient-to-r from-purple-500 to-pink-500 font-extrabold p-3 hover:brightness-110 cursor-pointer"
                         }`}
-          disabled={!emailFieldUsed || passFieldUsed}
+          disabled={!emailFieldUsed || !passFieldUsed}
           onClick={login}
         >
           Cadastrar
