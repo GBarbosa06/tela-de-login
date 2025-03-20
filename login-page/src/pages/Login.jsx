@@ -3,34 +3,32 @@ import Title from "../components/Title";
 import Input from "../components/Input";
 import { Eye, EyeOff } from "lucide-react";
 
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const [emailFieldUsed, setEmailFieldUsed] = useState(false);
   const [passFieldUsed, setPassFieldUsed] = useState(false);
 
   useEffect(() => {
-    setEmailFieldUsed(email.trim() !== "")
-    setPassFieldUsed(password.trim() !== "")
-  }, [email, password])
+    setEmailFieldUsed(email.trim() !== "");
+    setPassFieldUsed(password.trim() !== "");
+  }, [email, password]);
 
   function login(event) {
     event.preventDefault();
 
-    if(email === "email@gmail.com" && password === "gui123"){
+    if (email === "email@gmail.com" && password === "gui123") {
       alert("Login realizado com sucesso");
-    }
-    else{
-      alert("Credenciais inválidas")
+    } else {
+      alert("Credenciais inválidas");
     }
   }
 
   return (
     <div className="min-w-[500px] h-[390px] flex justify-center items-center flex-col text-white">
       <Title>Login</Title>
-      <form className="flex flex-col gap-2">      
+      <form className="flex flex-col gap-2">
         <Input
           placeholder="Email"
           value={email}
@@ -68,10 +66,7 @@ function Login() {
         >
           Cadastrar
         </button>
-        
-        
       </form>
-
     </div>
   );
 }
