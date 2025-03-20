@@ -31,7 +31,7 @@ function Register() {
   return (
     <div className=" min-w-[500px] h-[390px] flex justify-center items-center flex-col text-white">
       <Title>Cadastro</Title>
-      <form className="flex flex-col gap-2 w-90">
+      <form className="flex flex-col gap-2">
         <Input
           placeholder="Nome"
           value={name}
