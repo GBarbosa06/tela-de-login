@@ -3,6 +3,8 @@ import Title from "../components/Title";
 import Input from "../components/Input";
 import ValidationMessages from "../components/ValidationMessages";
 import { Eye, EyeOff } from "lucide-react";
+import PageChange from "../components/PageChange";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
@@ -14,6 +16,10 @@ function Register() {
   const [samePass, setSamePass] = useState(false);
   const [sixChars, setSixChars] = useState(false);
   const [show, setShow] = useState(false);
+
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     setNameFieldUsed(name.trim() !== "");
@@ -97,6 +103,7 @@ function Register() {
           Cadastrar
         </button>
       </form>
+      <PageChange>Já tem um conta? <span onClick={navigate("/login")}>Faça login</span></PageChange>
     </div>
   );
 }
