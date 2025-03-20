@@ -7,9 +7,11 @@ function App() {
   return (
     <div className='bg-neutral-800 w-screen min-h-screen flex justify-center items-center'>
     
-    <Register />
+    <h1>teste</h1>
 
-    <Login />
+    {/* <Register />
+
+    <Login /> */}
      
       
     </div>

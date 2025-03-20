@@ -3,27 +3,26 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './pages/Login.jsx'
+import Register from './pages/Register.jsx'
 
- /*const router = createBrowserRouter([
-  // ! Após a criação de ambas as paginas (login e register), criar uma inicial, que direcionará para ou login ou register, usando router
-  // ? avaliar mudança de cor do sistema
-  // ? avaliar criação de modo claro e escuro 
+ const router = createBrowserRouter([
   { 
     path: "/",
-    element: "<App />"
+    element: <App />
   }, 
   {
     path: "/login",
-    element: "<App />"
+    element: <Login />
   },
   {
     path: "/register",
-    element: "<App />"
+    element: <Register />
   }
-])*/
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )

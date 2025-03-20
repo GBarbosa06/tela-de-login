@@ -26,7 +26,7 @@ function Login() {
   }
 
   return (
-    <div className="min-w-[500px] h-[390px] flex justify-center items-center flex-col text-white">
+    <div className="w-screen h-screen bg-neutral-800 flex justify-center items-center flex-col text-white">
       <Title>Login</Title>
       <form className="flex flex-col gap-2">
         <Input
